@@ -15,7 +15,6 @@ class Home extends Component {
         return (
             <div className="home-page">
                 <h1 className="home-title">I'm the Home Page</h1>
-            
                 <Button type="primary" onClick={() => this.props.history.push({
                     pathname: '/login',
                     state: {

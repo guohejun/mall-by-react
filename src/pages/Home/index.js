@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
 import logo from '@src/logo.svg'
 import './index.sass'
-import {Button} from 'antd-mobile'
+import {Button, TabBar} from 'antd-mobile'
 
 class Home extends Component {
     constructor() {
         super()
         this.state = {
-            timer: null
+            
         }
-    }
-
-    componentDidMount() {
-        
-    }
-
-    componentWillUnmount() {
-        
     }
 
     render() {
@@ -30,6 +22,7 @@ class Home extends Component {
                         id: 3
                     }
                 })}>通过函数跳转</Button>
+                TabBar
             </div>
         );
     }

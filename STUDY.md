@@ -1,9 +1,8 @@
 ## 知识记述
-
-1. react-router 和 react-router-dom 的区别
-2. 引用 antd-mobile 插件，使用 babel-plugin-import 插件，在 package.json 文件中设置全局引用 antd-mobile 的样式文件
-3. preact 和 react 的区别
-4. react 组件中绑定 this 的四种方式
++ 1.react-router 和 react-router-dom 的区别
++ 2.引用 antd-mobile 插件，使用 babel-plugin-import 插件，在 package.json 文件中设置全局引用 antd-mobile 的样式文件
++ 3.preact 和 react 的区别
++ 4.react 组件中绑定 this 的四种方式
 
    - 第四种：
      事件定义：采用箭头函数定义；事件调用：采用箭头函数包裹

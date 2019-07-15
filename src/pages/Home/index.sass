@@ -1,3 +1,8 @@
+*
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  box-sizing: border-box;
 .home-title
   color: red
 .home-logo
@@ -6,3 +11,36 @@
   border-radius: 100%
   overflow: hidden
   border: 1px solid green
+.cardBox
+  background: #fff;
+  .cardItem
+    display: flex;
+    align-items: center;
+    width: calc(50% - 15px);
+    height: 88px;
+    margin: 0 10px 10px 0;
+    background: #f9f9f9;
+    &:nth-child(1)
+      margin-top: 10px;
+      margin-left: 10px;
+    &:nth-child(2)
+      margin-top: 10px;
+    &:nth-child(3)
+      margin-left: 10px;
+    .cardItem__img 
+      width: 88px;
+      height: 88px;
+      border: 1px solid #ccc;
+    .cardItem__right
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      height: 100%;
+      padding: 10px;
+      .title
+        color: #333;
+        font-weight: 600;
+      .number
+        font-size: 12px;
+        color: #999;

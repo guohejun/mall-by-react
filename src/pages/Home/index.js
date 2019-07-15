@@ -43,14 +43,15 @@ class Home extends Component {
         />
         <section className="bannerBox" />
         <section className="cardBox">
-          <Flex>
+          <Flex wrap="wrap">
             {this.state.noticeList.map((item, index) => (
-              <Flex.Item key={index} className="cardItem" onClick={(e) => this.onLinkTo(e, item)}>
+              <div key={index} className="cardItem" onClick={(e) => this.onLinkTo(e, item)}>
                 <img src="{item.imgUrl}" alt="" className="cardItem__img"/>
                 <div className="cardItem__right">
                   <p className="title">{item.title}</p>
+                  <span className="number">{index+10}</span>
                 </div>
-              </Flex.Item>
+              </div>
             ))}
           </Flex>
         </section>

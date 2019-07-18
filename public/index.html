@@ -23,6 +23,26 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+      (function (doc, win, i) {
+          var docEl = doc.documentElement,
+              resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+              recalc = function () {
+                  var clientWidth = docEl.clientWidth;
+                  if (!clientWidth) return;
+                  if (clientWidth >= i) {
+                      docEl.style.fontSize = '100px';
+                  } else {
+                      docEl.style.fontSize = 100 * (clientWidth / i) + 'px';
+                  }
+              };
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window, 750);
+      // 750是设计稿的宽度。设计稿上div宽度为750，则width为7.5rem，直接除以100即可。
+      // 替换css中原来的px值，则先乘以2，再除以100
+  </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

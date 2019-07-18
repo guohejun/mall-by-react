@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "@src/logo.svg";
 import "./index.sass";
+import MyForm from '@component/myForm';
 import Tool from '../../utils/api'
 import {
   WingBlank,
@@ -130,6 +131,8 @@ class Login extends Component {
               }
             />
           </Card>
+          <WhiteSpace size="lg" />
+          <MyForm></MyForm>
           <WhiteSpace size="lg" />
         </WingBlank>
       </div>

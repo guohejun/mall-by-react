@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./index.sass";
 import Tool from '@utils/api';
 import Form from '@components/common/form'
+import MyForm from '@component/myForm';
 import {
   WingBlank,
   WhiteSpace,
@@ -132,6 +133,8 @@ class Login extends Component {
           </Card>
           <WhiteSpace size="lg" />
           <Form></Form>
+          <MyForm></MyForm>
+          <WhiteSpace size="lg" />
         </WingBlank>
       </div>
     );

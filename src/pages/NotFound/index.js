@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from '@src/logo.svg'
 import './index.sass'
 
 class NotFound extends Component {

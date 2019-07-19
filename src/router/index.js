@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { HashRouter, Route, Link, Switch,Redirect } from 'react-router-dom'
+import React from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import Login from '@pages/Login'
 import Home from '@pages/Home'
 import User from '@pages/User'

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import logo from "@src/logo.svg";
 import "./index.sass";
-import { Button, Carousel, TabBar, Flex, SearchBar } from "antd-mobile";
+import { Carousel, TabBar, Flex, SearchBar } from "antd-mobile";
 
 class Home extends Component {
   constructor(props) {
@@ -52,7 +51,7 @@ class Home extends Component {
         <section className="bannerBox">
           <Carousel>
             {this.state.bannerList.map((item, index) => (
-              <div className="imgItem">
+              <div key={index} className="imgItem">
                 <img src={item} alt=""/>
               </div>
             ))}

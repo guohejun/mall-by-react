@@ -9,7 +9,6 @@
 
    ```
    onLinkTo = (e, item) => {
-    console.log(e, item)
     this.props.history.push({
       pathname: item.appUrl
     })
@@ -43,10 +42,27 @@
 
 ---
 
-## 使用 Tab 键实现代码自动补全设置：
+## React中文官方文档
 
-- 在 Settings->Workbench->Appearance->Edit in settings.json 文件根级，添加代码：
-  "emmet.triggerExpansionOnTab":true
-  保存即可。
+- [react 中文官方文档](https://react.docschina.org/docs/components-and-props.html)
+
+---
+
+## VsCode设置：
+
+#### 在 Settings->Workbench->Appearance->Edit in settings.json 文件根级，添加代码：
+
+```
+// 使用Tab键完成标签自动补全
+"emmet.triggerExpansionOnTab":true,
+
+// 自动补全的语言设置：包括html和jsx
+"emmet.includeLanguages": {
+  "vue-html": "html",
+  "javascript": "javascriptreact"
+}
+// 控制是否在搜索中跟踪符号链接(降低vsCode对CPU的高额消耗)
+"search.followSymlinks": false
+```
 
 ---

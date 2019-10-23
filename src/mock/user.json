@@ -1,0 +1,17 @@
+{
+	"code": 200,
+	"message": "get userInfo success",
+	"data": {
+		"id": 1,
+		"nickName": "蚂蚁君",
+		"realName": "郭贺军",
+		"gender": "1",
+		"age": 24,
+		"avatar": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+		"vipLevel": "1",
+		"vipLevelName": "普通会员",
+		"signDaysThisMonth": 2,
+		"coinNum": 20,
+		"signCoinStep": 10
+	}
+}

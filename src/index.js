@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import BasicRoute from '@src/router';
+import '@src/assets/less/normal.less';
+import '@src/assets/less/global.less';
+import BasicRoute from '@src/router/index.jsx';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

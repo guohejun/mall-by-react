@@ -1,0 +1,86 @@
+{
+	"code": 200,
+	"message": "get recommend success",
+	"data": [
+		{
+			"id": 1,
+			"productName": "测试商品名称1测试商品名称1测试商品名称1测试商品名称1",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 1
+		},
+		{
+			"id": 2,
+			"productName": "测试商品名称2",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 3,
+			"productName": "测试商品名称3",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 4,
+			"productName": "测试商品名称4",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 5,
+			"productName": "测试商品名称5",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 11,
+			"productName": "测试商品名称1测试商品名称1测试商品名称1测试商品名称1",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 1
+		},
+		{
+			"id": 21,
+			"productName": "测试商品名称21",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 31,
+			"productName": "测试商品名称31",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 41,
+			"productName": "测试商品名称41",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		},
+		{
+			"id": 51,
+			"productName": "测试商品名称51",
+			"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+			"saleVolume": 10000,
+			"price": "999.99",
+			"isNew": 0
+		}
+	]
+}

@@ -1,0 +1,103 @@
+.user-page {
+  height: 100%;
+  font-size: .28rem;
+  .user {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+    .user-header {
+      display: flex;
+      align-items: center;
+      height: 4rem;
+      padding-left: .5rem;
+      background-image: linear-gradient(#99d9ea, #2d231f);
+      .user-avatar {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 100%;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .user-info {
+        padding-left: .5rem;
+        .p1 {
+          line-height: .6rem;
+          .nickname {
+            font-size: .48rem;
+            //font-style: italic;
+            color: #fff;
+            margin-right: .2rem;
+          }
+          .gender {
+            //font-style: italic;
+            font-size: .24rem;
+            color: #fff;
+          }
+        }
+        .p2 {
+          line-height: .5rem;
+          font-size: .28rem;
+          .label {
+            color: #fff;
+          }
+          .value {
+            color: #ff0;
+          }
+        }
+        .p3 {
+          line-height: .5rem;
+          .signIn {
+            padding: 0 10px;
+            margin-top: .1rem;
+            font-size: 0.28rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+            line-height: 0.52rem;
+            border-radius: 3px;
+            background-image: linear-gradient(30deg, #e8bd21, #442b2b);
+          }
+        }
+      }
+    }
+    .user-navs {
+      .list {
+        .nav-item {
+          display: flex;
+          align-items: center;
+          padding: .35rem .3rem;
+          border-bottom: 1px solid #ccc;
+          user-select: none;
+          &:active, &:focus {
+            background: #ddd;
+          }
+          &:first-child {
+            border-top: 1px solid #ccc;
+          }
+          .item-left {
+            width: .42rem;
+            height: .42rem;
+            margin-right: .2rem;
+            color: #333;
+          }
+          .item-label {
+            flex: 1;
+            margin-right: .2rem;
+          }
+          .item-right {
+            &.item-right__icon {
+              width: .3rem;
+              height: .3rem;
+            }
+            &.item-right__span {
+              text-align: right;
+              color: #666;
+            }
+          }
+        }
+      }
+    }
+  }
+}

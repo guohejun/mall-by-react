@@ -9,3 +9,20 @@
 		bottom: 0;
 	}
 }
+.text-overflow, .text-overflow-2, .text-overflow-3 {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: .3rem;
+}
+.text-overflow {
+	white-space: nowrap;
+}
+.text-overflow-2, .text-overflow-3 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+.text-overflow-3 {
+	-webkit-line-clamp: 3;
+}

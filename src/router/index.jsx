@@ -5,6 +5,7 @@ import Home from '@src/pages/Home/index.jsx'
 import Recommend from '@src/pages/Recommend/index.jsx'
 import Cart from '@src/pages/Cart/index.jsx'
 import Collection from '@src/pages/Collection/index.jsx'
+import ProductDetail from '@src/pages/ProductDetail/index.jsx'
 import User from '@src/pages/User/index.jsx'
 import NotFound from '@src/pages/NotFound/index.jsx'
 
@@ -17,6 +18,7 @@ const BasicRoute = () => (
 			<Route exact path="/cart" component={Cart}/>
 			<Route exact path="/user" component={User}/>
 			<Route exact path="/collection" component={Collection}/>
+			<Route exact path="/productDetail/:id" component={ProductDetail}/>
 			<Route component={NotFound}/>
 		</Switch>
 	</HashRouter>

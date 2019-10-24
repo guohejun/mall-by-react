@@ -12,13 +12,13 @@ class IconSvg extends Component {
 	};
 
 	render() {
-		const {name, className} = this.props;
+		const {name, className, style} = this.props;
 		let cls = "icon-svg";
 		if (className) {
 			cls = cls + " " + className
 		}
 		return (
-			<svg className={cls}>
+			<svg className={cls} style={style}>
 				<use xlinkHref={"#icon" + name}></use>
 			</svg>
 		)

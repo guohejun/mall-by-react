@@ -1,0 +1,35 @@
+{
+	"code": 200,
+	"message": "get productDetail success",
+	"data": {
+		"id": 1,
+		"productName": "测试商品名称1测试商品名称1测试商品名称1测试商品名称1",
+		"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+		"saleVolume": 10000,
+		"price": "999.99",
+		"originPrice": "1200.00",
+		"isNew": 1,
+		"isCollect": 0,
+		"imgList": [
+			"https://gd1.alicdn.com/imgextra/i5/TB1Jy5_oTtYBeNjy1XdYXFXyVXa_M2.SS2",
+			"https://gd1.alicdn.com/imgextra/i6/TB1MRXKjlyWBuNkSmFPYXFguVXa_M2.SS2",
+			"https://gd4.alicdn.com/imgextra/i4/666226805/O1CN01iy4gLH208jmncGuPt_!!0-item_pic.jpg",
+			"https://gd4.alicdn.com/imgextra/i4/666226805/O1CN01iy4gLH208jmncGuPt_!!0-item_pic.jpg",
+			"https://gd1.alicdn.com/imgextra/i5/TB1bjdvoN9YBuNjy0FfYXFIsVXa_M2.SS2"
+		],
+		"discountVip": [
+			{"level": "1", "value": "95.00"},
+			{"level": "2", "value": "90.00"},
+			{"level": "3", "value": "85.00"},
+			{"level": "4", "value": "80.00"},
+			{"level": "5", "value": "75.00"}
+		],
+		"coupons": [
+			{"id": 1, "price": "10", "expire": "2019-10-25 23:59:59", "limit": "100"},
+			{"id": 2, "price": "20", "expire": "2019-10-26 23:59:59", "limit": "200"},
+			{"id": 3, "price": "30", "expire": "2019-10-27 23:59:59", "limit": "300"},
+			{"id": 4, "price": "40", "expire": "2019-10-28 23:59:59", "limit": "400"},
+			{"id": 5, "price": "50", "expire": "2019-10-29 23:59:59", "limit": "500"}
+		]
+	}
+}

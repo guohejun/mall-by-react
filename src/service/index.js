@@ -2,7 +2,7 @@ import qs from "qs";
 const files = require.context('../mock', false, /.json$/);
 
 
-const baseUrl = "http://localhost:3000/";
+const baseUrl = window.location.protocol + "://" + window.location.host;
 
 const getData = (url, data = {}) => {
 	let query = qs.stringify(data);

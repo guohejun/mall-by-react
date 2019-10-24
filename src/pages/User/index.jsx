@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './index.less'
-import arrowRightIcon from "@src/assets/icons/arrow_right.svg";
+import "./index.less";
+import {Toast} from "antd-mobile";
 import AppTabBar from "@src/component/AppTabBar";
 import IconSvg from "@src/component/IconSvg";
 import {getUserInfo} from "@src/service/api";
@@ -24,7 +24,7 @@ class User extends Component {
 					hasArrow: true
 				},
 				{
-					icon: "jinbi",
+					icon: "money",
 					label: "我的喵币",
 					path: "/coin",
 					hasArrow: false,
@@ -58,7 +58,7 @@ class User extends Component {
 	}
 
 	onSignIn() {
-		alert("签到成功")
+		Toast.info("签到成功");
 	}
 
 	onNavLink(item) {
@@ -103,7 +103,7 @@ class User extends Component {
 										<span className="item-label">{item.label}</span>
 										{
 											item.hasArrow
-												? <img src={arrowRightIcon} alt="" className="item-right item-right__icon"/>
+												? <IconSvg className="item-right item-right__icon" name={"gengduo"}/>
 												: <span className="item-right item-right__span">{item.data.valueStr}</span>
 										}
 									</li>

@@ -37,7 +37,7 @@ class User extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.getUserInfo();
 	}
 

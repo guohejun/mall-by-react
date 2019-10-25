@@ -19,3 +19,7 @@ export const getUserInfo = (params) => {
 export const getProductById = (params) => {
 	return API.getData("../../mock/productDetail.json", params)
 }
+
+export const getCartData = (params) => {
+	return API.getData("../../mock/cart.json", params)
+}

@@ -1,0 +1,89 @@
+{
+	"code": 200,
+	"message": "get cart success",
+	"data": {
+		"total": 4,
+		"list": [
+			{
+				"storeId": "123",
+				"storeName": "巢玖视频专营店",
+				"storeDesc": "9年老店，专注零食，只为让您更开心!",
+				"product": [
+					{
+						"id": 1,
+						"productName": "测试商品名称1测试商品名称1测试商品名称1测试商品名称1",
+						"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+						"saleVolume": 10000,
+						"price": "999.99",
+						"isNew": 1,
+						"num": 1,
+						"skuId": "22121",
+						"skuStr": "【经典款】小兔奶糖铁盒装328g(约65粒)"
+					},
+					{
+						"id": 2,
+						"productName": "测试商品名称2",
+						"thumbnail": "https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg",
+						"saleVolume": 10000,
+						"price": "999.99",
+						"isNew": 0,
+						"num": 1,
+						"skuId": "22121",
+						"skuStr": "【经典款】小兔奶糖铁盒装328g(约65粒)"
+					},
+					{
+						"id": 3,
+						"productName": "测试商品名称3",
+						"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+						"saleVolume": 10000,
+						"price": "999.99",
+						"isNew": 0,
+						"num": 1,
+						"skuId": "22121",
+						"skuStr": "【经典款】小兔奶糖铁盒装328g(约65粒)"
+					}
+				]
+			},
+			{
+				"storeId": "12334",
+				"storeName": "巢玖视频专营店(二店)",
+				"storeDesc": "7年老店，专注零食，只为让您更开心!",
+				"product": [
+					{
+						"id": 1,
+						"productName": "测试商品名称1测试商品名称1测试商品名称1测试商品名称1",
+						"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+						"saleVolume": 10000,
+						"price": "999.99",
+						"isNew": 1,
+						"num": 1,
+						"skuId": "22121",
+						"skuStr": "【经典款】小兔奶糖铁盒装328g(约65粒)"
+					},
+					{
+						"id": 2,
+						"productName": "测试商品名称2",
+						"thumbnail": "https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg",
+						"saleVolume": 10000,
+						"price": "999.99",
+						"isNew": 0,
+						"num": 1,
+						"skuId": "22121",
+						"skuStr": "【经典款】小兔奶糖铁盒装328g(约65粒)"
+					},
+					{
+						"id": 3,
+						"productName": "测试商品名称3",
+						"thumbnail": "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
+						"saleVolume": 10000,
+						"price": "999.99",
+						"isNew": 0,
+						"num": 1,
+						"skuId": "22121",
+						"skuStr": "【经典款】小兔奶糖铁盒装328g(约65粒)"
+					}
+				]
+			}
+		]
+	}
+}

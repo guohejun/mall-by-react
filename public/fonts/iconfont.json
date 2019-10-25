@@ -78,7 +78,7 @@
     {
       "icon_id": "1800905",
       "name": "close",
-      "font_class": "close",
+      "font_class": "close_circle",
       "unicode": "e63a",
       "unicode_decimal": 58938
     },
@@ -139,6 +139,13 @@
       "unicode_decimal": 58902
     },
     {
+      "icon_id": "5203251",
+      "name": "关闭",
+      "font_class": "close",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
       "icon_id": "5236956",
       "name": "下 拉",
       "font_class": "xiala_up",
@@ -186,6 +193,13 @@
       "font_class": "search",
       "unicode": "e6aa",
       "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "6548532",
+      "name": "返回",
+      "font_class": "back",
+      "unicode": "e655",
+      "unicode_decimal": 58965
     },
     {
       "icon_id": "7008906",

@@ -28,7 +28,7 @@ class MyListView extends Component {
 		listHeight: propTypes.any.isRequired
 	};
 
-	componentWillMount() {
+	componentDidMount() {
 		this.getList();
 	}
 
@@ -37,7 +37,6 @@ class MyListView extends Component {
 		const {apiName, apiUrl, apiParams} =  this.props.apiData;
 		let requestParams = Object.assign({},{pageNum, pageSize}, apiParams);
 		apiName(apiUrl, requestParams).then(res => {
-			console.log(res)
 			if (res.code === 200) {
 				this.initData = this.state.refreshing ? res.data : this.initData.concat(res.data);
 				this.setState({

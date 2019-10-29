@@ -2,7 +2,7 @@
 	"code": 200,
 	"message": "get cart success",
 	"data": {
-		"total": 4,
+		"total": 6,
 		"list": [
 			{
 				"storeId": "123",

@@ -1,11 +1,18 @@
 import React, {Component} from "react";
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
 import {List, Checkbox, Toast} from "antd-mobile";
 import "./index.less";
 import AppHeader from "@src/component/AppHeader";
 import {getCartData} from "@src/service/api";
+import {fetchCartList} from "@src/redux/actions/cart.jsx";
 import IconSvg from "../../component/IconSvg";
 
 const CheckboxItem = Checkbox.CheckboxItem;
+
+const loadData = props => {
+	props.fetchCartList();
+}
 
 class Cart extends Component {
 	constructor(props) {
@@ -13,15 +20,16 @@ class Cart extends Component {
 
 		this.state = {
 			isEdit: false,
-			data: {
-				total: 0,
-				list: []
-			}
+			// data: {
+			// 	total: 0,
+			// 	list: []
+			// }
 		};
 	}
 
 	componentDidMount() {
-		this.getCartData();
+		// this.getCartData();
+		loadData(this.props);
 	}
 
 	getCartData() {
@@ -56,7 +64,7 @@ class Cart extends Component {
 	}
 
 	render() {
-		const {data} = this.state;
+		const {data} = this.props;
 		return (
 			<section className="page cart-page">
 				<AppHeader title="购物车" close={true} rightIcon={this.renderRightIcon()} style={{backgroundColor: "#3b3e66", color: "#fff"}}/>
@@ -116,4 +124,14 @@ class Cart extends Component {
 	}
 }
 
-export default Cart;
+const mapStateToProps = (state, ownProps) => {
+	console.log("cart Page mapStateToProps === ", state);
+	const {cart} = state;
+	return {
+		data: cart.data
+	}
+}
+
+export default withRouter(connect(mapStateToProps, {
+	fetchCartList
+})(Cart));

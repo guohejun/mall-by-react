@@ -13,7 +13,16 @@ const getData = (url, data = {}) => {
 		method: 'get',
 	})
 		.then(response => {
-			// return response.json()
+			// return response.json().then(json => {
+			// 	if (!response.ok) {
+			// 		return Promise.reject(json)
+			// 	}
+			// 	return json;
+			// });
+			// throw new Error(`【"${url}"】---接口未定义`);
+
+
+
 			const keys = files.keys();
 			for(let index = 0, len = keys.length; index < len; index++) {
 				let fileName = keys[index].replace(/(.*\/)*([^.]+).*/ig,"$2");

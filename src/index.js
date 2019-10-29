@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from "redux";
-import {connect, Provider} from "react-redux";
 import '@src/assets/less/normal.less';
 import '@src/assets/less/global.less';
 import BasicRoute from '@src/router/index.jsx';
 import * as serviceWorker from './serviceWorker';
+import {createStore} from "redux";
+import {connect, Provider} from "react-redux";
+import configStore from '@src/redux/store'
 
-const store = createStore(reducer);
+const store = configStore();
 
 ReactDOM.render(
 	<Provider store={store}>

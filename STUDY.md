@@ -109,16 +109,51 @@
   
   ##### 11.redux和react-redux模块化封装/使代码看起来整洁/逻辑清晰的正确姿势？
   
-  ##### 12.docker命令常用
-  >docker ps
-  >docker ps -all
-  >docker start id
-  >docker restart
+  ##### 12.docker常用命令
+  1. docker build -t yourImageName . 生成一个镜像
+  2. docker images 查看镜像列表
+  3. docker rmi image 删除镜像
+  4. docker rmi -f image 删除镜像
+  5. docker run -d -p 80:8000 node_app_2019_10_30 npm start 根据镜像创建一个容器
+  6. docker ps 查看正在运行的容器列表
+  7. docker ps -all 查看所有容器列表
+  8. docker start containerId 开始运行一个容器
+  9. docker restart containerId 重启一个容器
+  10. docker stop containerId 停止运行一个容器
+  11. docker rm containerId 删除容器
+  12. docker rm -f containerId 强制删除容器
   
-  删除镜像  docker rmi image
-  删除镜像  docker rmi -f image
-  删除容器  docker rm containerId
-  强制删除容器  docker rm -f containerId
+  ##### 13.docker构建镜像工作原理和构建命令解析
+  ###### ```docker build -t tagName -f DockerfilePath -q .```
+  1. 【-t】: ```--tag```，镜像的名字及标签。
+  2. 【-f】: 指定要使用的Dockerfile路径。
+  3. 【-q】: 安静模式，成功后只输出镜像 ID。
+  4. 【.】: build context（镜像构建上下文）的目录，而不是dockerfile文件的目录。
+  5. 当不使用【-f】指定Dockerfile文件路径时，
+  >Docker工作原理：Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具。Docker 的引擎提供了一组 REST API，
+  被称为 Docker Remote API，而如 docker 命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互，
+  从而完成各种功能。因此，虽然表面上我们好像是在本机执行各种 docker 功能，
+  但实际上，一切都是使用的远程调用形式在服务端（Docker 引擎）完成。
+  也因为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举。
+  docker build 命令构建镜像，其实并非在本地构建，而是在服务端，也就是 Docker 引擎中构建的。
+  当构建的时候，用户会指定构建镜像上下文的路径，docker build 命令得知这个路径后，
+  会将路径下的所有内容打包，然后上传给 Docker 引擎。这样 Docker引擎收到这个上下文包后，
+  展开就会获得构建镜像所需的一切文件。
+  
+  ##### 13.linux常用命令
+  1. cd / 回到根目录
+  2. cd .. | cd ~ 回到上级目录
+  3. ls | ll(ls -la) 查看当前目录下所有文件和文件夹
+  4. mkdir dirName 创建文件夹
+  5. rmdir dirName | rmdir -f dirName 删除或强制删除文件夹
+  6. rm -r dirName 递归删除文件夹下所有文件
+  7. whereis xxx 查看xxx安装在哪里
+  8. who 查看当前登录者信息 | w 查看详细信息
+  9. last 查看最近登录者列表
+  10. yum install -y git 安装git
+  11. rz 上传文件 如果没有安装rz，执行yum -y install lrzsz安装
+  12. mv file1 file2 修改文件或文件夹名称
+  
   
   ##### 13.react打包后，出现build文件夹，将其放到服务器上后，出现资源路径错误的问题
   >解决办法：在package.json文件中添加如下代码：

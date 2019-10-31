@@ -33,6 +33,12 @@ class User extends Component {
 						valueStr: "20个"
 					}
 				},
+				{
+					icon: "game",
+					label: "游戏中心",
+					path: "/gameCenter",
+					hasArrow: true
+				},
 			]
 		}
 	}

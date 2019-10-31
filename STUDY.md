@@ -108,3 +108,32 @@
   >用于表示使用当前元素的color色值。
   
   ##### 11.redux和react-redux模块化封装/使代码看起来整洁/逻辑清晰的正确姿势？
+  
+  ##### 12.docker命令常用
+  >docker ps
+  >docker ps -all
+  >docker start id
+  >docker restart
+  
+  删除镜像  docker rmi image
+  删除镜像  docker rmi -f image
+  删除容器  docker rm containerId
+  强制删除容器  docker rm -f containerId
+  
+  ##### 13.react打包后，出现build文件夹，将其放到服务器上后，出现资源路径错误的问题
+  >解决办法：在package.json文件中添加如下代码：
+  ```"homepage": "."```
+  
+  ##### 14.Steps
+  1. ```将服务端项目的文件夹和dockfile文件，放到一个父级文件夹doDocker中，打包压缩```
+  2. 上传：```rz```
+  2. ```unzip doDocker```
+  3. ```docker build -t yourImageName .```
+  4. ```docker run -d -p 80:8000 node_app_2019_10_30 npm start```
+  >解释下：-p 用来指定本机端口号和容器端口号之间的映射关系，这样外网通过访问本机的80端口，
+  >就能访问到容器的8000端口了,容器对外暴露的端口号在dockerfile中查看。
+  5. ```curl -i localhost:80``` 
+  curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。
+  它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。
+  （ CRUD:增查改删,即,create/read/update/delate）
+ 

@@ -19,28 +19,12 @@ class Cart extends Component {
 		super(props);
 
 		this.state = {
-			isEdit: false,
-			// data: {
-			// 	total: 0,
-			// 	list: []
-			// }
+			isEdit: false
 		};
 	}
 
 	componentDidMount() {
-		// this.getCartData();
 		loadData(this.props);
-	}
-
-	getCartData() {
-		Toast.loading("", 0);
-		getCartData().then(res => {
-			if (res.code === 200) {
-				this.setState({data: res.data})
-			}
-		}).finally(() => {
-			Toast.hide();
-		})
 	}
 
 	onStoreChange(shop) {
@@ -52,73 +36,107 @@ class Cart extends Component {
 	}
 
 	onClickCartManage() {
-		this.props.history.push({pathname: "/"})
+		this.setState({isEdit: !this.state.isEdit});
 	}
 
 	renderRightIcon() {
+		const {isEdit} = this.state;
 		return (
 			<div className="right-icon" onClick={() => this.onClickCartManage()}>
-				<span>管理</span>
+				<span>{isEdit ? "完成" : "管理"}</span>
 			</div>
 		)
 	}
 
+	renderFooter() {
+		const {isEdit, totalPrice} = this.state;
+		return (
+			<footer className="footer">
+				<CheckboxItem className="checkbox">全选</CheckboxItem>
+				{
+					isEdit
+						? <div className="right">
+								<button className="button">删除</button>
+							</div>
+						: <div className="right">
+								<div className="total-price">
+									<span>合计：</span>
+									<span className="price">
+										<span>￥</span>
+										<span>{totalPrice || 0}</span>
+									</span>
+								</div>
+								<button className="button">结算</button>
+							</div>
+				}
+			</footer>
+		)
+	}
+
 	render() {
-		const {data} = this.props;
+		const {cart} = this.props;
+		const {data, isLoading} = cart;
 		return (
 			<section className="page cart-page">
-				<AppHeader title="购物车" close={true} rightIcon={this.renderRightIcon()} style={{backgroundColor: "#3b3e66", color: "#fff"}}/>
-
-				<section className="cart-page-container">
-					<p className="total">共{data.total}件宝贝</p>
-					<div className="list-wrap">
-						<div className="placeholder"> </div>
-						<ul className="list">
-							{
-								data.list.map((shop, index) => (
-									<li className="item" key={shop.storeId}>
-										<div className="shop-row">
-											<CheckboxItem className="checkbox" key={shop.storeId} onChange={() => this.onStoreChange(shop)}>
-											</CheckboxItem>
-											<div className="shop-name text-overflow">
-												<span>{shop.storeName}</span>
-												<IconSvg name="gengduo"/>
-											</div>
-											<div className="shop-btn">
-												<span>领券</span>
-											</div>
-										</div>
-										<ol className="goods-in-shop">
-											{
-												shop.product.map((good, index) => (
-													<li className="good" key={good.id}>
-														<CheckboxItem className="checkbox" key={good.id} onChange={() => this.onGoodChange(shop, good)}>
-														</CheckboxItem>
-														<div className="wrap">
-															<div className="inner">
-																<div className="img">
-																	<img src={good.thumbnail} alt=""/>
+				<AppHeader title="购物车" close={true} rightIcon={this.renderRightIcon()} style={{
+					backgroundColor: "#3b3e66",
+					color: "#fff"
+				}}/>
+				{
+					isLoading
+						? <h3 className="page-container loading" style={{height: "calc(100% - 1.8rem)"}}>Loading...</h3>
+						: <section className="page-container" style={{height: "calc(100% - 1.8rem)"}}>
+							<p className="total">共{data.total || 0}件宝贝</p>
+							<div className="list-wrap">
+								<div className="placeholder"></div>
+								<ul className="list">
+									{
+										data.list.map((shop, index) => (
+											<li className="item" key={shop.storeId}>
+												<div className="shop-row">
+													<CheckboxItem className="checkbox" key={shop.storeId}
+													              onChange={() => this.onStoreChange(shop)}/>
+													<div className="shop-name text-overflow">
+														<span>{shop.storeName}</span>
+														<IconSvg name="gengduo"/>
+													</div>
+													<div className="shop-btn">
+														<span>领券</span>
+													</div>
+												</div>
+												<ol className="goods-in-shop">
+													{
+														shop.product.map((good, index) => (
+															<li className="good" key={good.id}>
+																<CheckboxItem className="checkbox" key={good.id}
+																              onChange={() => this.onGoodChange(shop, good)}/>
+																<div className="wrap">
+																	<div className="inner">
+																		<div className="img">
+																			<img src={good.thumbnail} alt=""/>
+																		</div>
+																		<div className="info">
+																			<p className="good-name text-overflow-2">{good.productName}</p>
+																			<p className="good-sku text-overflow-2">{good.skuStr}</p>
+																		</div>
+																	</div>
+																	<div className="operate">
+																		<span className="price">￥{good.price}</span>
+																		<div className="calc">- 1 +</div>
+																	</div>
 																</div>
-																<div className="info">
-																	<p className="good-name text-overflow-2">{good.productName}</p>
-																	<p className="good-sku text-overflow-2">{good.skuStr}</p>
-																</div>
-															</div>
-															<div className="operate">
-																<span className="price">￥{good.price}</span>
-																<div className="calc">- 1 +</div>
-															</div>
-														</div>
-													</li>
-												))
-											}
-										</ol>
-									</li>
-								))
-							}
-						</ul>
-					</div>
-				</section>
+															</li>
+														))
+													}
+												</ol>
+											</li>
+										))
+									}
+								</ul>
+							</div>
+						</section>
+				}
+				{this.renderFooter()}
 			</section>
 		)
 	}
@@ -128,7 +146,7 @@ const mapStateToProps = (state, ownProps) => {
 	console.log("cart Page mapStateToProps === ", state);
 	const {cart} = state;
 	return {
-		data: cart.data
+		cart
 	}
 }
 

@@ -69,6 +69,13 @@
       "unicode_decimal": 58903
     },
     {
+      "icon_id": "1418246",
+      "name": "游戏",
+      "font_class": "game",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
       "icon_id": "1788116",
       "name": "选中",
       "font_class": "choose_fill",
@@ -116,6 +123,13 @@
       "font_class": "back_top",
       "unicode": "e60d",
       "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "3073908",
+      "name": "连连看楼层",
+      "font_class": "link_up",
+      "unicode": "e632",
+      "unicode_decimal": 58930
     },
     {
       "icon_id": "4070669",
@@ -200,6 +214,13 @@
       "font_class": "back",
       "unicode": "e655",
       "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "6551501",
+      "name": "待开发",
+      "font_class": "undevelop",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
     },
     {
       "icon_id": "7008906",

@@ -7,6 +7,8 @@ import Cart from '@src/pages/Cart/index.jsx'
 import Collection from '@src/pages/Collection/index.jsx'
 import ProductDetail from '@src/pages/ProductDetail/index.jsx'
 import User from '@src/pages/User/index.jsx'
+import GameCenter from '@src/pages/GameCenter/index.jsx'
+import LinkUpGame from '@src/pages/LinkUpGame/index.jsx'
 import NotFound from '@src/pages/NotFound/index.jsx'
 
 const BasicRoute = () => (
@@ -19,6 +21,8 @@ const BasicRoute = () => (
 			<Route exact path="/user" component={User}/>
 			<Route exact path="/collection" component={Collection}/>
 			<Route exact path="/productDetail/:id" component={ProductDetail}/>
+			<Route exact path="/gameCenter" component={GameCenter}/>
+			<Route exact path="/linkUpGame" component={LinkUpGame}/>
 			<Route component={NotFound}/>
 		</Switch>
 	</HashRouter>

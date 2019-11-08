@@ -141,18 +141,35 @@
   展开就会获得构建镜像所需的一切文件。
   
   ##### 13.linux常用命令
-  1. cd / 回到根目录
-  2. cd .. | cd ~ 回到上级目录
-  3. ls | ll(ls -la) 查看当前目录下所有文件和文件夹
-  4. mkdir dirName 创建文件夹
-  5. rmdir dirName | rmdir -f dirName 删除或强制删除文件夹
-  6. rm -r dirName 递归删除文件夹下所有文件
-  7. whereis xxx 查看xxx安装在哪里
-  8. who 查看当前登录者信息 | w 查看详细信息
-  9. last 查看最近登录者列表
-  10. yum install -y git 安装git
-  11. rz 上传文件 如果没有安装rz，执行yum -y install lrzsz安装
-  12. mv file1 file2 修改文件或文件夹名称
+  1. $ cd / 回到根目录
+  2. $ cd .. 回到上级目录 | $ cd ~ root用户则是回到/root/  其他用户回到/root/home/ 
+  3. $ ls | ll(ls -la) 查看当前目录下所有文件和文件夹
+  4. $ mkdir dirName 创建文件夹
+  5. $ rmdir dirName 删除文件夹（不能删除非空文件夹）
+  6. $ rm -r dirName 递归删除文件夹下所有文件
+  7. $ whereis xxx 查看xxx安装在哪里
+  8. $ who 查看当前登录者信息 | $ w 查看详细信息
+  9. $ last 查看最近登录者列表
+  10. $ yum install -y git 安装git
+  11. $ rz 上传文件 如果没有安装rz，执行$ yum -y install lrzsz安装
+  12. $ mv file1 file2 修改文件或文件夹名称
+  13. $ touch fileName.txt 创建一个空文件
+  14. 【vim命令】$ vim a.txt 查看a.txt文件。i键或s键或insert键 进入编辑状态，esc退出编辑状态
+  15. 【vim命令】$ dd 删除光标当前所在的一行
+  15. 【vim命令】$ dddG 删除文件内所有内容
+  15. 【vim命令】$ yy 复制光标当前所在的一行
+  15. 【vim命令】$ p 粘贴刚才复制的一行内容
+  15. 【vim命令】$ u 撤销上个操作（误操作可以用这个恢复）
+  15. 【vim命令】$ :w 保存当前文件（ : 是英文的冒号）
+  15. 【vim命令】$ :w log2.txt 另存当前文件内容为 log2.txt
+  15. 【vim命令】$ :q 退出当前文件
+  15. 【vim命令】$ :q! 不保存 并强制退出当前文件
+  15. 【vim命令】$ :wq 保存并退出当前文件
+  15. 【vim命令】$ /keyword 在vim中搜寻字符串keyword
+  16. $ chmod 751 file 用三位八进制数字的形式来表示权限，第一位指定属主的权限，
+  第二位指定组权限，第三位指定其他用户的权限，
+  每位通过4(读)、2(写)、1(执行)三种数值的和来确定权限。
+  如6(4+2)代表有读写权，7(4+2+1)有读、写和执行的权限。
   
   
   ##### 13.react打包后，出现build文件夹，将其放到服务器上后，出现资源路径错误的问题

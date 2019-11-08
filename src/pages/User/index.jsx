@@ -36,7 +36,7 @@ class User extends Component {
 				{
 					icon: "game",
 					label: "游戏中心",
-					path: "/gameCenter",
+					path: "/game",
 					hasArrow: true
 				},
 			]

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {withRouter} from "react-router-dom";
 import "./index.less";
 import AppHeader from "@src/component/AppHeader";
-import IconSvg from "../../component/IconSvg";
+import IconSvg from "@src/component/IconSvg";
 import {Grid, Toast} from "antd-mobile";
 
 class GameCenter extends Component {
@@ -11,7 +11,7 @@ class GameCenter extends Component {
 
 		this.state = {
 			list: [
-				{icon: "link_up", text: "翻牌", path: "/linkUpGame"},
+				{icon: "link_up", text: "翻牌", path: "/game/openCard/level"},
 				{icon: "undevelop", text: "待开发", path: ""}
 			]
 		}

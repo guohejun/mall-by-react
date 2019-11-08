@@ -1,0 +1,37 @@
+{
+	"level_1": [
+		{
+			"barrier": "1",
+			"grid_num": "8",
+			"max_step": "13",
+			"headerBackgroundColor": "#ffe58f",
+			"headerColor": "gold-3",
+			"pageBackgroundColor": "#fffbe6",
+			"pageColor": "gold-1",
+			"gridBackgroundColor": "#faad14",
+			"gridColor": "gold-6"
+		},
+		{
+			"barrier": "2",
+			"grid_num": "8",
+			"max_step": "13",
+			"headerBackgroundColor": "#eaff8f",
+			"headerColor": "lime-3",
+			"pageBackgroundColor": "#fcffe6",
+			"pageColor": "lime-1",
+			"gridBackgroundColor": "#a0d911",
+			"gridColor": "lime-6"
+		},
+		{
+			"barrier": "3",
+			"grid_num": "8",
+			"max_step": "13",
+			"headerBackgroundColor": "#91d5ff",
+			"headerColor": "lime-3",
+			"pageBackgroundColor": "#e6f7ff",
+			"pageColor": "lime-1",
+			"gridBackgroundColor": "#1890ff",
+			"gridColor": "lime-6"
+		}
+	]
+}

@@ -23,3 +23,19 @@ export const getProductById = (params) => {
 export const getCartData = (params) => {
 	return API.getData("../../mock/cart.json", params)
 }
+
+export const getGameOpenCardLevel = (params) => {
+	return API.getData("gameOpenCard/getLevels", params)
+}
+
+export const createGameOpenCardLevel = (params) => {
+	return API.postData("gameOpenCard/createLevel", params)
+}
+
+export const getGameOpenCardBarriers = (params) => {
+	return API.getData("gameOpenCard/getBarriers", params)
+}
+
+export const createGameOpenCardBarriers = (params) => {
+	return API.postData("gameOpenCard/createBarriers", params)
+}

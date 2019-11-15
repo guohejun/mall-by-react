@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import "./index.less";
-import {Toast} from "antd-mobile";
+import {Toast, Modal} from "antd-mobile";
 import AppTabBar from "@src/component/AppTabBar";
 import IconSvg from "@src/component/IconSvg";
 import {getUserInfo} from "@src/service/api";
@@ -39,6 +39,12 @@ class User extends Component {
 					path: "/game",
 					hasArrow: true
 				},
+				{
+					icon: "game",
+					label: "退出登录",
+					path: "",
+					hasArrow: false
+				},
 			]
 		}
 	}
@@ -48,18 +54,17 @@ class User extends Component {
 	}
 
 	getUserInfo() {
-		getUserInfo().then(res => {
-			if (res.code === 200) {
-				this.setState({user: res.data})
-			}
-		})
+		this.setState({user: JSON.parse(sessionStorage.getItem("user") || "{}")});
 	}
 
 	onFilterGender() {
 		switch (this.state.user.gender) {
-			case "1": return "男";
-			case "2": return "女";
-			default: return "未知";
+			case "1":
+				return "男";
+			case "2":
+				return "女";
+			default:
+				return "未知";
 		}
 	}
 
@@ -68,8 +73,18 @@ class User extends Component {
 	}
 
 	onNavLink(item) {
+		console.log(this.props.history)
 		if (item.path && item.hasArrow) {
 			this.props.history.push({pathname: item.path});
+		} else if (item.label === "退出登录") {
+			Modal.alert('Delete', 'Are you sure???', [
+				{ text: 'Cancel', onPress: () => {} },
+				{ text: 'Ok', onPress: () => {
+						sessionStorage.clear();
+						this.props.history.replace({pathname: "/login"});
+					}
+				},
+			]);
 		}
 	}
 
@@ -110,7 +125,7 @@ class User extends Component {
 										{
 											item.hasArrow
 												? <IconSvg className="item-right item-right__icon" name={"gengduo"}/>
-												: <span className="item-right item-right__span">{item.data.valueStr}</span>
+												: <span className="item-right item-right__span">{item.data ? item.data.valueStr : ""}</span>
 										}
 									</li>
 								))

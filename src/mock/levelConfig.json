@@ -32,6 +32,26 @@
 			"pageColor": "lime-1",
 			"gridBackgroundColor": "#1890ff",
 			"gridColor": "lime-6"
+		},
+		{
+			"level": 1,
+			"name": "简单难度",
+			"color": "160, 217, 17"
+		},
+		{
+			"level": 2,
+			"name": "中级难度",
+			"color": "124, 179, 5"
+		},
+		{
+			"level": 3,
+			"name": "高级难度",
+			"color": "91, 140, 0"
+		},
+		{
+			"level": 4,
+			"name": "超级模式",
+			"color": "63, 102, 0"
 		}
 	]
 }

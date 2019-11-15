@@ -39,3 +39,7 @@ export const getGameOpenCardBarriers = (params) => {
 export const createGameOpenCardBarriers = (params) => {
 	return API.postData("gameOpenCard/createBarriers", params)
 }
+//用户登录
+export const login = (params) => {
+	return API.postData("user/login", params)
+}

@@ -1,10 +1,12 @@
 import qs from "qs";
+import {Toast} from "antd-mobile";
+
 const files = require.context('../mock', false, /.json$/);
 
 
 // const baseUrl = window.location.protocol + "://" + window.location.host;
-const baseUrl = "http://172.20.10.4:9000/";
-// const baseUrl = "http://10.100.8.72:9000/";
+// const baseUrl = "http://172.20.10.4:9000/";
+const baseUrl = "http://10.100.8.72:9000/";
 
 const getData = (url, data = {}) => {
 	let query = qs.stringify(data);
@@ -45,7 +47,19 @@ const postData = (url, data = {}) => {
 		},
 		method: 'POST',
 	})
-		.then(response => response.json())
+		.then(response => {
+			return response.json().then(json => {
+				if (!response.ok) {
+					return Promise.reject(json)
+				}
+				return Promise.resolve(json);
+			});
+		})
+		.catch(error => {
+			console.log("postData error: ", error);
+			Toast.info(error.msg || "服务器错误", 1.5);
+			return {msg: error.msg || "服务器错误"};
+		})
 }
 
 export default {getData, postData};

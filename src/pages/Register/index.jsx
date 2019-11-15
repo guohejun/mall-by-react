@@ -4,7 +4,7 @@ import {createForm} from 'rc-form';
 import "./index.less";
 import {login} from "@src/service/api";
 
-class Login extends React.Component {
+class Register extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -70,10 +70,8 @@ class Login extends React.Component {
 			console.log(error, value);
 			if (!error) {
 				login(value).then(res => {
-					console.log(res)
-					Toast.info(res.msg, 1);
+					Toast.info(res.msg, 1)
 					if (res.code === 200) {
-						sessionStorage.setItem("user", JSON.stringify(res.data || "{}"));
 						setTimeout(() =>{
 							this.props.history.push({
 								pathname: "/"
@@ -121,4 +119,4 @@ class Login extends React.Component {
 }
 
 
-export default createForm()(Login);
+export default createForm()(Register);

@@ -82,60 +82,56 @@ class Cart extends Component {
 					backgroundColor: "#3b3e66",
 					color: "#fff"
 				}}/>
-				{
-					isLoading
-						? <h3 className="page-container loading" style={{height: "calc(100% - 1.8rem)"}}>Loading...</h3>
-						: <section className="page-container" style={{height: "calc(100% - 1.8rem)"}}>
-							<p className="total">共{data.total || 0}件宝贝</p>
-							<div className="list-wrap">
-								<div className="placeholder"></div>
-								<ul className="list">
-									{
-										data.list.map((shop, index) => (
-											<li className="item" key={shop.storeId}>
-												<div className="shop-row">
-													<CheckboxItem className="checkbox" key={shop.storeId}
-													              onChange={() => this.onStoreChange(shop)}/>
-													<div className="shop-name text-overflow">
-														<span>{shop.storeName}</span>
-														<IconSvg name="gengduo"/>
-													</div>
-													<div className="shop-btn">
-														<span>领券</span>
-													</div>
-												</div>
-												<ol className="goods-in-shop">
-													{
-														shop.product.map((good, index) => (
-															<li className="good" key={good.id}>
-																<CheckboxItem className="checkbox" key={good.id}
-																              onChange={() => this.onGoodChange(shop, good)}/>
-																<div className="wrap">
-																	<div className="inner">
-																		<div className="img">
-																			<img src={good.thumbnail} alt=""/>
-																		</div>
-																		<div className="info">
-																			<p className="good-name text-overflow-2">{good.productName}</p>
-																			<p className="good-sku text-overflow-2">{good.skuStr}</p>
-																		</div>
-																	</div>
-																	<div className="operate">
-																		<span className="price">￥{good.price}</span>
-																		<div className="calc">- 1 +</div>
-																	</div>
+				<section className="page-container" style={{height: "calc(100% - 1.8rem)"}}>
+					<p className="total">共{data.total || 0}件宝贝</p>
+					<div className="list-wrap">
+						<div className="placeholder"></div>
+						<ul className="list">
+							{
+								data.list.map((shop, index) => (
+									<li className="item" key={shop.storeId}>
+										<div className="shop-row">
+											<CheckboxItem className="checkbox" key={shop.storeId}
+											              onChange={() => this.onStoreChange(shop)}/>
+											<div className="shop-name text-overflow">
+												<span>{shop.storeName}</span>
+												<IconSvg name="gengduo"/>
+											</div>
+											<div className="shop-btn">
+												<span>领券</span>
+											</div>
+										</div>
+										<ol className="goods-in-shop">
+											{
+												shop.product.map((good, index) => (
+													<li className="good" key={good.id}>
+														<CheckboxItem className="checkbox" key={good.id}
+														              onChange={() => this.onGoodChange(shop, good)}/>
+														<div className="wrap">
+															<div className="inner">
+																<div className="img">
+																	<img src={good.thumbnail} alt=""/>
 																</div>
-															</li>
-														))
-													}
-												</ol>
-											</li>
-										))
-									}
-								</ul>
-							</div>
-						</section>
-				}
+																<div className="info">
+																	<p className="good-name text-overflow-2">{good.productName}</p>
+																	<p className="good-sku text-overflow-2">{good.skuStr}</p>
+																</div>
+															</div>
+															<div className="operate">
+																<span className="price">￥{good.price}</span>
+																<div className="calc">- 1 +</div>
+															</div>
+														</div>
+													</li>
+												))
+											}
+										</ol>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				</section>
 				{this.renderFooter()}
 			</section>
 		)

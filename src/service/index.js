@@ -6,11 +6,10 @@ const files = require.context('../mock', false, /.json$/);
 
 // const baseUrl = window.location.protocol + "://" + window.location.host;
 // const baseUrl = "http://172.20.10.4:9000/";
-const baseUrl = "http://10.100.8.72:9000/";
+const baseUrl = "http://10.100.8.78:9000/";
 
 const getData = (url, data = {}) => {
 	let query = qs.stringify(data);
-	console.log(query)
 	return fetch(`${baseUrl + url}${query ? '?' + query : query}`, {
 		headers: {
 			'content-type': 'application/json'

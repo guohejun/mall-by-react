@@ -44,7 +44,8 @@ class Login extends React.Component {
 						]
 					}
 				},
-			]
+			],
+			loading: false
 		}
 	}
 
@@ -69,7 +70,9 @@ class Login extends React.Component {
 		validateFields((error, value) => {
 			console.log(error, value);
 			if (!error) {
-				login(value).then(res => {
+				this.setState({loading: true});
+				(async () => {
+					const res = await login(value);
 					console.log(res)
 					Toast.info(res.msg, 1);
 					if (res.code === 200) {
@@ -80,13 +83,14 @@ class Login extends React.Component {
 							})
 						}, 1500)
 					}
-				})
+					this.setState({loading: false});
+				})();
 			}
 		});
 	}
 
 	render() {
-		const {form} = this.state;
+		const {form, loading} = this.state;
 		const {getFieldDecorator, getFieldError} = this.props.form;
 
 		return (
@@ -108,7 +112,7 @@ class Login extends React.Component {
 						))
 					}
 
-					<Button type="primary" size="small" onClick={() => this.onSubmit()}>确认</Button>
+					<Button type="primary" size="small" loading={loading} onClick={() => this.onSubmit()}>确认</Button>
 
 					<footer className="card-footer">
 						<span>还没有账号？</span>

@@ -77,9 +77,9 @@ class User extends Component {
 		if (item.path && item.hasArrow) {
 			this.props.history.push({pathname: item.path});
 		} else if (item.label === "退出登录") {
-			Modal.alert('Delete', 'Are you sure???', [
-				{ text: 'Cancel', onPress: () => {} },
-				{ text: 'Ok', onPress: () => {
+			Modal.alert('提示', '确定要退出登录吗?', [
+				{ text: '取消', onPress: () => {} },
+				{ text: '确定', onPress: () => {
 						sessionStorage.clear();
 						this.props.history.replace({pathname: "/login"});
 					}

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {withRouter} from "react-router";
 import "./index.less";
 import IconSvg from "../IconSvg";
+import {Modal} from "antd-mobile";
 
 class AppHeader extends Component {
 	constructor(props) {
@@ -15,7 +16,13 @@ class AppHeader extends Component {
 	}
 
 	onClose() {
-		this.props.history.replace({pathname: "/"});
+		Modal.alert('提示', '确定关闭当前页面吗?', [
+			{ text: '取消', onPress: () => {} },
+			{ text: '确定', onPress: () => {
+					this.props.history.replace({pathname: "/"});
+				}
+			},
+		]);
 	}
 
 	renderRightIcon() {

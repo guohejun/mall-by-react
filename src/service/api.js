@@ -23,21 +23,21 @@ export const getProductById = (params) => {
 export const getCartData = (params) => {
 	return API.getData("../../mock/cart.json", params)
 }
-
+//查询难度
 export const getGameOpenCardLevel = (params) => {
 	return API.getData("gameOpenCard/getLevels", params)
 }
-
-export const createGameOpenCardLevel = (params) => {
-	return API.postData("gameOpenCard/createLevel", params)
-}
-
+//查询关卡列表和用户进度
 export const getGameOpenCardBarriers = (params) => {
 	return API.getData("gameOpenCard/getBarriers", params)
 }
-
-export const createGameOpenCardBarriers = (params) => {
-	return API.postData("gameOpenCard/createBarriers", params)
+//查询关卡
+export const getBarrierById = (params) => {
+	return API.getData("gameOpenCard/getBarrierById", params)
+}
+//创建或更新进度
+export const addOrUpdateCardProgress = (params) => {
+	return API.postData("gameOpenCard/addOrUpdateCardProgress", params)
 }
 //用户登录
 export const login = (params) => {

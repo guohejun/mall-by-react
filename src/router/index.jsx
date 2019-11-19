@@ -51,8 +51,8 @@ const BasicRoute = (props) => {
 				<PrivateRoute exact path="/productDetail/:id" component={ProductDetail}/>
 				<PrivateRoute exact path="/game" component={GameCenter}/>
 				<PrivateRoute exact path="/game/openCard/level" component={GameOpenCardSelectLevel}/>
-				<PrivateRoute exact path="/game/openCard/barrier/:level" component={GameOpenCardSelectBarrier}/>
-				<PrivateRoute exact path="/game/openCard/main/:barrier" component={GameOpenCardGameMain}/>
+				<PrivateRoute exact path="/game/openCard/barrier/:levelId" component={GameOpenCardSelectBarrier}/>
+				<PrivateRoute exact path="/game/openCard/main/:levelId/:barrierId/:progressId" component={GameOpenCardGameMain}/>
 				<Route exact path="/register" component={Register}/>
 				<Route component={NotFound}/>
 			</Switch>

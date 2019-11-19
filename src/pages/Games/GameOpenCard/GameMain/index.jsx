@@ -2,31 +2,37 @@ import React, {Component} from "react";
 import {withRouter} from "react-router-dom";
 import "./index.less";
 import AppHeader from "@src/component/AppHeader";
+import {getBarrierById, addOrUpdateCardProgress} from "@src/service/api";
+import {Toast} from "antd-mobile";
 
 class GameOpenCard extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			sku: 6,
-			skuList: [6, 12, 24, 36, 48],
+			detail: {}, //关卡详情
 			list: [],
 			cacheList: [],
 			cacheOpened: [],
 			canItemClick: true,
 			prevClickIndex: -1, // 点击的上一个index值
 			timeId: null,
-			process: 0
+			process: 0,
+			currentBarrier: sessionStorage.getItem("currentBarrier") || 0, //当前第几关
 		}
 	}
 
 	componentDidMount() {
-		this.onCreateRandomData(this.state.sku / 2);
+		this.initBarrier(this.props.match.params.barrierId);
 	}
 
-	onChangeSku(item) {
-		this.setState({sku: item});
-		this.onCreateRandomData(item / 2);
+	initBarrier(id) {
+		getBarrierById({id}).then(res => {
+			if (res.code === 200) {
+				this.setState({detail: res.data})
+				this.onCreateRandomData(res.data.grid_num / 2);
+			}
+		})
 	}
 
 	onCreateRandomData(num = 3) {
@@ -52,9 +58,8 @@ class GameOpenCard extends Component {
 	}
 
 	updateList(data) {
-		let state = JSON.parse(JSON.stringify(this.state));
-		let {cacheList, cacheOpened, timeId} = this.state;
-		console.log("updateList type: ", JSON.stringify(data), "updateList cacheOpened: ", JSON.stringify(cacheOpened))
+		let {cacheList, timeId} = this.state;
+		console.log("updateList type [仅用于测试看type]: ", JSON.stringify(data))
 		this.setState({
 			list: JSON.parse(JSON.stringify(cacheList)),
 			canItemClick: true,
@@ -62,6 +67,40 @@ class GameOpenCard extends Component {
 		})
 		console.log("cacheList: ", cacheList)
 		clearTimeout(timeId);
+		if (cacheList.every(o => o.match === true)) {
+			this.passSuccess();
+		}
+	}
+
+	passSuccess() {
+		const {levelId, barrierId, progressId} = this.props.match.params;
+		const userId = JSON.parse(sessionStorage.getItem("user") || "{}").id;
+		const params = {
+			id: progressId,
+			level: levelId,
+			barrier: barrierId,
+			user_id: userId
+		}
+		addOrUpdateCardProgress(params).then(res => {
+			if (res.code === 200) {
+				Toast.info("闯关成功，即将进入下一关", 2);
+				sessionStorage.setItem("currentBarrier", res.data.barrier);
+				this.setState({currentBarrier: res.data.barrier});
+				const currentLevelLen = sessionStorage.getItem("currentLevelLen") || 0;
+				setTimeout(() => {
+					const {levelId} = this.props.match.params;
+					let pathname;
+					if (res.data.barrier < currentLevelLen) {
+						pathname = `/game/openCard/main/${levelId}/${res.data.barrier}/${res.data.id}`
+					} else {
+						pathname = `/game/openCard/level`;
+					}
+					this.props.history.replace({pathname});
+				}, 2000)
+			} else {
+				Toast.info(res.msg, 1.5);
+			}
+		})
 	}
 
 	onItemClick(item, currentIndex) {
@@ -78,10 +117,10 @@ class GameOpenCard extends Component {
 		}
 		process += 1;
 
-		console.log("process: ", process, this.state.timeId)
+		// console.log("process: ", process, this.state.timeId)
 		// 如果此次点击的不是上次的卡片，则立即将待翻开的卡片翻开，并且将canItemClick置为true
 		if (this.state.timeId && process === 1) {
-			console.log("事件前 更新")
+			// console.log("事件前 更新")
 			this.updateList({type: null});
 		}
 
@@ -96,7 +135,7 @@ class GameOpenCard extends Component {
 			this.setState({list, cacheList});
 			if (this.state.timeId && process === 1) return
 
-			// 判断是否当前卡片和已翻开的卡片相匹配
+			// 判断 当前卡片 和 已翻开的卡片 是否匹配
 			let cacheOpened = JSON.parse(JSON.stringify(this.state.cacheOpened));
 			let openedAndNotMatch = cacheOpened.filter(o => o.match === false);
 			let isCurrentMatchOpened = openedAndNotMatch.some(o => o.label === item.label);
@@ -116,7 +155,7 @@ class GameOpenCard extends Component {
 						o.match = true;
 					}
 					return o
-				})
+				});
 
 				// 如果用户没有点击其他卡片，则短暂延迟后，将匹配的卡片标记已匹配
 				let timeId = setTimeout(() => {
@@ -136,7 +175,6 @@ class GameOpenCard extends Component {
 				cacheOpened.splice(openK);
 
 				let timeId = setTimeout(() => {
-					console.log(cacheList)
 					this.updateList({type: 2});
 				}, 500)
 				this.setState({cacheList, cacheOpened, timeId})
@@ -171,43 +209,23 @@ class GameOpenCard extends Component {
 		return label
 	}
 
-	onRenderSku() {
-		const {skuList} = this.state;
-		return (
-			<div className="skus-wrap">
-				<span className="label">规格：</span>
-				<ul className="skus">
-					{
-						skuList.map(item => (
-							<li className="sku" key={item}>
-								<button className={this.state.sku === item ? "active" : ""}
-								        onClick={() => this.onChangeSku(item)}>{item}</button>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-		)
-	}
-
 	render() {
-		const {list} = this.state;
+		const {list, detail, currentBarrier} = this.state;
 		return (
 			<section className="page link-up-game-page">
-				<AppHeader title="翻牌" close={true}/>
+				<AppHeader title={`第 ${currentBarrier} 关`} close={true}/>
 				<section className="page-container" style={{height: "calc(100% - .8rem)"}}>
-					{this.onRenderSku()}
 					<ul className="list">
 						{
 							list.map((item, index) => (
 								<li className={this.onFilterItemClass(item)} key={item.id}
 								    onClick={() => this.onItemClick(item, index)}>
-									<div className="front">
+									<div className="front" style={{backgroundColor: detail.gridBackgroundColor}}>
 										<div className="info">
 											<span>{this.onFilterItemLabel(item)}</span>
 										</div>
 									</div>
-									<div className="back">
+									<div className="back" style={{backgroundColor: detail.gridBackgroundColor}}>
 										<span>{this.onFilterItemLabel(item)}</span>
 									</div>
 								</li>

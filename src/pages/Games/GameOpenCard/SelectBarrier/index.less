@@ -1,4 +1,29 @@
-.link-up-game-page {
+.select-barrier-page {
 	.page-container {
+		.list {
+			display: flex;
+			flex-wrap: wrap;
+			.item {
+				width: 1.02rem;
+				height: 1.02rem;
+				margin: .4rem 0 0 .4rem;
+				color: #fff;
+				font-size: .36rem;
+				border-radius: .1rem;
+				background-image:  linear-gradient(45deg, #999, transparent);
+				box-shadow: 0 0 0.1rem 0 #999;
+				transition: all .5s;
+				&.passed {
+					background-image: linear-gradient(45deg, #f00, #ffc800);
+					box-shadow: 0 0 0.1rem 0 rgba(250, 200, 0, .9);
+				}
+				&:active, &:focus {
+					background-image: linear-gradient(45deg, #ffc800, transparent);
+					box-shadow: 0 0 0.1rem 0 rgba(250, 200, 0, .9);
+					color: #f00;
+					font-weight: 600;
+				}
+			}
+		}
 	}
 }

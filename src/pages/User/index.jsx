@@ -64,12 +64,12 @@ class User extends Component {
 			case "2":
 				return "女";
 			default:
-				return "未知";
+				return "保密";
 		}
 	}
 
 	onSignIn() {
-		Toast.info("签到成功");
+		Toast.info("签到成功", 1.5);
 	}
 
 	onNavLink(item) {
@@ -80,7 +80,7 @@ class User extends Component {
 			Modal.alert('提示', '确定要退出登录吗?', [
 				{ text: '取消', onPress: () => {} },
 				{ text: '确定', onPress: () => {
-						sessionStorage.clear();
+						sessionStorage.removeItem("user");
 						this.props.history.replace({pathname: "/login"});
 					}
 				},
@@ -99,7 +99,7 @@ class User extends Component {
 						</div>
 						<div className="user-info">
 							<p className="p1">
-								<span className="nickname">{user.nickName}</span>
+								<span className="nickname">{user.nickname}</span>
 								<span className="gender">{this.onFilterGender()}</span>
 							</p>
 							<p className="p2">

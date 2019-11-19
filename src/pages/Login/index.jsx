@@ -1,5 +1,6 @@
 import React from "react";
-import {List, InputItem, Card, Button, Tag, Toast} from 'antd-mobile';
+import {Link} from "react-router-dom";
+import {InputItem, Card, Button, Toast} from 'antd-mobile';
 import {createForm} from 'rc-form';
 import "./index.less";
 import {login} from "@src/service/api";
@@ -45,7 +46,7 @@ class Login extends React.Component {
 					}
 				},
 			],
-			loading: false
+			btnLoading: false
 		}
 	}
 
@@ -65,17 +66,35 @@ class Login extends React.Component {
 		}
 	};
 
+	componentDidMount() {
+		this.initLogin();
+	}
+
+	initLogin() {
+		let loginHistory = JSON.parse(sessionStorage.getItem("loginHistory") || "{}");
+		let {form} = this.state;
+		form.map(o => {
+			if (o.name === "login") {
+				o.options.initialValue = loginHistory.login
+			} else if (o.name === "password") {
+				o.options.initialValue = loginHistory.password
+			}
+		})
+		this.setState({form});
+	}
+
 	onSubmit() {
 		const {validateFields} = this.props.form;
 		validateFields((error, value) => {
 			console.log(error, value);
 			if (!error) {
-				this.setState({loading: true});
+				this.setState({btnLoading: true});
 				(async () => {
 					const res = await login(value);
 					console.log(res)
 					Toast.info(res.msg, 1);
 					if (res.code === 200) {
+						sessionStorage.setItem("loginHistory", JSON.stringify({login: value.login, password: value.password}));
 						sessionStorage.setItem("user", JSON.stringify(res.data || "{}"));
 						setTimeout(() =>{
 							this.props.history.push({
@@ -83,14 +102,14 @@ class Login extends React.Component {
 							})
 						}, 1500)
 					}
-					this.setState({loading: false});
+					this.setState({btnLoading: false});
 				})();
 			}
 		});
 	}
 
 	render() {
-		const {form, loading} = this.state;
+		const {form, btnLoading} = this.state;
 		const {getFieldDecorator, getFieldError} = this.props.form;
 
 		return (
@@ -112,11 +131,11 @@ class Login extends React.Component {
 						))
 					}
 
-					<Button type="primary" size="small" loading={loading} onClick={() => this.onSubmit()}>确认</Button>
+					<Button type="primary" size="small" loading={btnLoading} onClick={() => this.onSubmit()}>确认</Button>
 
 					<footer className="card-footer">
 						<span>还没有账号？</span>
-						<a href="#/register">去注册</a>
+						<Link to="/register">去注册</Link>
 					</footer>
 				</Card>
 			</div>

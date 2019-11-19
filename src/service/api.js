@@ -43,3 +43,7 @@ export const createGameOpenCardBarriers = (params) => {
 export const login = (params) => {
 	return API.postData("user/login", params)
 }
+//用户注册
+export const register = (params) => {
+	return API.postData("user/register", params)
+}

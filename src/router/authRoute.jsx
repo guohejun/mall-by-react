@@ -6,7 +6,7 @@ class PrivateRoute extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isLogin: !!sessionStorage.getItem("user")
+			isLogin: sessionStorage.getItem("user") && JSON.parse(sessionStorage.getItem("user")) !== "{}"
 		}
 	}
 

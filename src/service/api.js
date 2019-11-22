@@ -27,13 +27,17 @@ export const getCartData = (params) => {
 export const getGameOpenCardLevel = (params) => {
 	return API.getData("gameOpenCard/getLevels", params)
 }
-//查询关卡列表和用户进度
-export const getGameOpenCardBarriers = (params) => {
-	return API.getData("gameOpenCard/getBarriers", params)
+//根据level查询某难度关卡总列表
+export const getBarriersByLevel = (params) => {
+	return API.getData("gameOpenCard/getBarriersByLevel", params)
 }
-//查询关卡
-export const getBarrierById = (params) => {
-	return API.getData("gameOpenCard/getBarrierById", params)
+//根据level和user_id查询用户进度
+export const getLevelProgress = (params) => {
+	return API.getData("gameOpenCard/getLevelProgress", params)
+}
+//查询关卡详情
+export const getBarrierByLevelBarrier = (params) => {
+	return API.getData("gameOpenCard/getBarrierByLevelBarrier", params)
 }
 //创建或更新进度
 export const addOrUpdateCardProgress = (params) => {

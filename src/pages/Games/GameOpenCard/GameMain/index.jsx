@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {withRouter} from "react-router-dom";
 import "./index.less";
 import AppHeader from "@src/component/AppHeader";
-import {getBarrierById, addOrUpdateCardProgress} from "@src/service/api";
+import {getBarrierByLevelBarrier, addOrUpdateCardProgress} from "@src/service/api";
 import {Toast} from "antd-mobile";
 
 class GameOpenCard extends Component {
@@ -10,6 +10,7 @@ class GameOpenCard extends Component {
 		super(props);
 
 		this.state = {
+			user_id: JSON.parse(sessionStorage.getItem("user") || "{}").id, //用户id
 			detail: {}, //关卡详情
 			list: [],
 			cacheList: [],
@@ -17,20 +18,34 @@ class GameOpenCard extends Component {
 			canItemClick: true,
 			prevClickIndex: -1, // 点击的上一个index值
 			timeId: null,
-			process: 0,
-			currentBarrier: sessionStorage.getItem("currentBarrier") || 0, //当前第几关
+			process: 0
 		}
 	}
 
 	componentDidMount() {
-		this.initBarrier(this.props.match.params.barrierId);
+		this.getBarrierDetail(this.props);
+
+		// 测试参数改变跳转
+		// const {levelId, curBarrier, progressId} = this.props.match.params;
+		// setTimeout(() => {
+		// 	this.props.history.replace({
+		// 		pathname: `/game/openCard/main/${levelId}/${curBarrier*1 + 1}/${progressId}`
+		// 	})
+		// }, 5000)
 	}
 
-	initBarrier(id) {
-		getBarrierById({id}).then(res => {
+	//组件更新时被调用
+	componentWillReceiveProps(nextProps) {
+		this.getBarrierDetail(nextProps);
+	}
+
+	getBarrierDetail(props) {
+		const {levelId, curBarrier} = props.match.params;
+		console.log("levelId, curBarrier: ", levelId, curBarrier)
+		getBarrierByLevelBarrier({level: levelId, barrier: curBarrier}).then(res => {
 			if (res.code === 200) {
-				this.setState({detail: res.data})
-				this.onCreateRandomData(res.data.grid_num / 2);
+				this.setState({detail: res.data});
+				this.onCreateRandomData((res.data || {}).grid_num / 2);
 			}
 		})
 	}
@@ -73,28 +88,24 @@ class GameOpenCard extends Component {
 	}
 
 	passSuccess() {
-		const {levelId, barrierId, progressId} = this.props.match.params;
-		const userId = JSON.parse(sessionStorage.getItem("user") || "{}").id;
+		const {levelId, curBarrier, progressId} = this.props.match.params;
+		const {user_id} = this.state;
 		const params = {
 			id: progressId,
 			level: levelId,
-			barrier: barrierId,
-			user_id: userId
-		}
+			barrier: curBarrier,
+			user_id
+		};
 		addOrUpdateCardProgress(params).then(res => {
 			if (res.code === 200) {
-				Toast.info("闯关成功，即将进入下一关", 2);
-				sessionStorage.setItem("currentBarrier", res.data.barrier);
-				this.setState({currentBarrier: res.data.barrier});
-				const currentLevelLen = sessionStorage.getItem("currentLevelLen") || 0;
+				const currentLevelBarriers = JSON.parse(sessionStorage.getItem("currentLevelBarriers") || "[]");
+				const isNextBarrier = res.data.barrier < currentLevelBarriers.length;
+				Toast.info(`${isNextBarrier ? '闯关成功，即将进入下一关！' : '闯关成功，恭喜你完成本难度所有关卡！'}`, 2);
+
+				// 跳转下一关或难度页
 				setTimeout(() => {
 					const {levelId} = this.props.match.params;
-					let pathname;
-					if (res.data.barrier < currentLevelLen) {
-						pathname = `/game/openCard/main/${levelId}/${res.data.barrier}/${res.data.id}`
-					} else {
-						pathname = `/game/openCard/level`;
-					}
+					let pathname = isNextBarrier ? `/game/openCard/main/${levelId}/${res.data.barrier * 1 + 1}/${res.data.id}` : `/game/openCard/level`;
 					this.props.history.replace({pathname});
 				}, 2000)
 			} else {
@@ -210,10 +221,11 @@ class GameOpenCard extends Component {
 	}
 
 	render() {
-		const {list, detail, currentBarrier} = this.state;
+		const {list, detail} = this.state;
+		const {curBarrier} = this.props.match.params;
 		return (
 			<section className="page link-up-game-page">
-				<AppHeader title={`第 ${currentBarrier} 关`} close={true}/>
+				<AppHeader title={`第 ${curBarrier} 关`} close={true}/>
 				<section className="page-container" style={{height: "calc(100% - .8rem)"}}>
 					<ul className="list">
 						{
